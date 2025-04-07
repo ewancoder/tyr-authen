@@ -1,0 +1,19 @@
+version: "3.8"
+
+networks:
+  default:
+    name: typingrealm
+    external: true
+
+services:
+  tyr-authen:
+    image: ghcr.io/ewancoder/tyr-authen:main
+    container_name: tyr-authen
+    volumes:
+      - /data/tyr-authen/dataprotection:/app/dataprotection
+      - /root/dp.pfx:/app/dp.pfx
+    restart: unless-stopped
+    mem_limit: 1g
+    mem_reservation: 750m
+    env_file:
+      - /data/tyr-authen/secrets.env

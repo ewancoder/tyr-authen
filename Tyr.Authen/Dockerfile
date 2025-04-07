@@ -5,6 +5,8 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY ["Directory.Build.props", "."]
+COPY ["Directory.Packages.props", "."]
 COPY ["Tyr.Authen/Tyr.Authen.csproj", "Tyr.Authen/"]
 RUN dotnet restore "Tyr.Authen/Tyr.Authen.csproj"
 COPY . .

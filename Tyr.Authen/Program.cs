@@ -22,8 +22,6 @@ try
         "Tyr.Authen",
         isDebug: isDebug);
 
-    config = config with { MachineAuthenticationAuthority = "http://localhost:5001" };
-
     await builder.ConfigureTyrApplicationBuilderAsync(config)
         .ConfigureAwait(false);
 

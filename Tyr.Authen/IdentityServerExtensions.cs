@@ -10,7 +10,7 @@ internal static class IdentityServerExtensions
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(Config.Clients)
+            .AddInMemoryClients(Config.GetClients(builder.Configuration))
             .AddLicenseSummary();
 
         return builder;

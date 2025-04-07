@@ -9,21 +9,21 @@ public static class Config
         new IdentityResources.OpenId()
     ];
 
-    public static IEnumerable<ApiScope> ApiScopes => [ new("foultalk") ];
+    public static IEnumerable<ApiScope> ApiScopes => [ new("machine") ];
 
-    public static IEnumerable<Client> Clients =>
+    public static IEnumerable<Client> GetClients(IConfiguration configuration) =>
     [
         new()
         {
-            ClientId = "foulbot",
+            ClientId = "machine",
             AllowedGrantTypes = [ "client_credentials" ],
-            AllowedScopes = [ "foultalk" ],
+            AllowedScopes = [ "machine" ],
             AccessTokenLifetime = 1200,
             ClientSecrets =
             [
                 new()
                 {
-                    Value = "foulbot".Sha256()
+                    Value = (configuration["MachineClientSecret"] ?? throw new InvalidOperationException("MachineClientSecret is not set.")).Sha256()
                 }
             ]
         }

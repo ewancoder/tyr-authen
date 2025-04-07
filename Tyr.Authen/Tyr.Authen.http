@@ -1,0 +1,6 @@
+@Api = localhost:5001
+
+GET {{Api}}/diag
+Accept: application/json
+
+###

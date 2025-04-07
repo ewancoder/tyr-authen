@@ -11,6 +11,7 @@ services:
     container_name: tyr-authen
     volumes:
       - /data/tyr-authen/dataprotection:/app/dataprotection
+      - /data/tyr-authen/keys:/app/keys
       - /root/dp.pfx:/app/dp.pfx
     restart: unless-stopped
     mem_limit: 1g

@@ -7,6 +7,8 @@ internal static class IdentityServerExtensions
         builder.Services.AddIdentityServer(options =>
             {
                 options.KeyManagement.KeyPath = "/app/keys";
+                options.LicenseKey = builder.Configuration["DuendeKey"]
+                    ?? throw new InvalidOperationException("Could not read Duende license key.");
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
